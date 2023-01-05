@@ -26,7 +26,7 @@ const Heading = styled.h2`
 const Name = styled.h2`
   color: #ffffff;
   margin-top: 0.75rem;
-  font-size: clamp(1.5rem, 1vw + 2rem, 5rem);
+  font-size: clamp(1rem, 2vw + 1.5rem, 5rem);
 `;
 const Description = styled.p`
   color: #858792;

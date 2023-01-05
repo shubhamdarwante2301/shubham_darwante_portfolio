@@ -6,6 +6,7 @@ import Education from "./components/Education";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/uiComponents/ScrollToTop";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
       <Project />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
