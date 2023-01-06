@@ -4,9 +4,10 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
 import Project from "./components/Project";
-import Contact from "./components/Contact";
+// import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/uiComponents/ScrollToTop";
+import ContactForm from "./components/ContactForm";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
       <Skills />
       <Education />
       <Project />
-      <Contact />
+      {/* <Contact /> */}
+      <ContactForm />
       <Footer />
       <ScrollToTop />
     </div>

@@ -1,6 +1,9 @@
-import React, {useRef} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import styled from "styled-components";
 import SectionHeading from "./uiComponents/SectionHeading";
+
+import { useForm } from '@formspree/react';
+import MyContact from "./uiComponents/MyContact";
 
 
 const ContactSection = styled.div`
@@ -8,21 +11,33 @@ const ContactSection = styled.div`
   background-color: #2a2c39;
   overflow: hidden;
 
-  @media (max-width: 365px) {
+  @media (max-width: 540px) {
     padding: 1rem;
   }
+`;
+
+const SuccessMessage = styled.div`
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
 `;
 
 const ContactWrapper = styled.div`
   margin-top: 2rem;
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   color: #ffffff;
+  gap: 1rem;
+
+  .contact-form {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const Group = styled.div`
   display: flex;
-  width: 70vw;
 
   @media (max-width: 900px) {
     flex-wrap: wrap;
@@ -39,7 +54,6 @@ const Input = styled.input`
 `;
 const TextArea = styled.textarea`
   margin: 1rem;
-  width: 100%;
   height: 10rem;
   padding: 0.7rem;
   background-color: #2a2c39;
@@ -49,6 +63,7 @@ const TextArea = styled.textarea`
 `;
 
 const Button = styled.input`
+  max-width: 300px;
   margin: 1rem;
   padding: 1rem 2rem;
   background-color: #2a2c39;
@@ -64,16 +79,30 @@ const Button = styled.input`
   }
 `;
 
-const Contact = () => {
-  const formRef = useRef()
-  const formSubmit = () => {
-    formRef.current.reset()
-  }
+const ContactForm = () => {
+    const formRef = useRef()
+    const [state, handleSubmit] = useForm('moqzqjwz')
+    const [success, setSuccess] = useState(false)
+    
+
+    useEffect(()=>{
+      if (state.succeeded) {
+        setSuccess(true)
+        formRef.current.reset()
+        console.log("message sent successsfully");
+      }
+      setTimeout(()=>{
+        setSuccess(false)
+      },1500)
+    },[state.succeeded])
+  
   return (
     <ContactSection id="contact">
       <SectionHeading heading={"Contact Me"} />
+        {success && <SuccessMessage>Thank you for contacting me!</SuccessMessage>}
       <ContactWrapper>
-        <form action="https://formspree.io/f/moqzqjwz" method="POST" ref={formRef}>
+        <MyContact />
+        <form onSubmit={handleSubmit} ref={formRef} className="contact-form">
           <Group>
             <Input name="name" type="text" placeholder="Name" autoComplete="off" required/>
             <Input name="email" type="text" placeholder="Email" autoComplete="off" required/>
@@ -83,11 +112,11 @@ const Contact = () => {
             <Input name="phone no" type="text" placeholder="Phone No." autoComplete="off" required/>
           </Group>
           <TextArea name="message" placeholder="Message" autoComplete="off" required/>
-          <Button type="submit" value="Send Message" onClick={formSubmit}/>
+          <Button type="submit" value="Send Message" disabled={state.submitting}/>
         </form>
       </ContactWrapper>
     </ContactSection>
   );
 };
 
-export default Contact;
+export default ContactForm;
