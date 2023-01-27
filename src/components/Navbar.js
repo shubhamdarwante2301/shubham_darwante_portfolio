@@ -56,13 +56,14 @@ const Logo = styled.div`
 const MenuItem = styled.li`
   padding: 0 0.9rem;
   cursor: pointer;
+  position: realtive;
   /* color: #858792; */
 
   &:hover {
     color: #ffffff;
     transition: color, 0.5s ease;
   }
-
+  
   @media (max-width: 900px) {
     padding: 10px 20px;
   }

@@ -46,7 +46,7 @@ const Project = () => {
 
         <a className="link" href="https://shubhamdarwante2301.github.io/tic-tac-toe/" rel="noreferrer noopener" target="_blank"><Movie>Tik-Tak-Toe</Movie></a>
 
-        <a className="link" href="https://shubhamdarwante2301.github.io/javascript-projects/to-do%20list/index.html" rel="noreferrer noopener" target="_blank"><Movie>To-Do List</Movie></a>
+        <a className="link" href="https://shubhamdarwante2301.github.io/cn_todolist_project/" rel="noreferrer noopener" target="_blank"><Movie>To-Do List</Movie></a>
       </ProjectWrapper>
     </SectionContainer>
   );
