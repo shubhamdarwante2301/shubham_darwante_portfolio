@@ -97,7 +97,7 @@ const Home = () => {
   return (
     <HomeStyle id="hero">
       <ProfileDetail>
-        <Heading>Hello! I'm</Heading>
+        <Heading>Hello! My name is</Heading>
         <Name>Shubham Darwante</Name>
         <Description>Front-End Developer</Description>
         <Socialicons />
